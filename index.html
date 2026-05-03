@@ -17,8 +17,6 @@ background:#0d1117;
 color:white;
 }
 
-/* MENU */
-
 nav{
 background:#010409;
 display:flex;
@@ -38,8 +36,6 @@ nav a:hover{
 color:#0b5ed7;
 }
 
-/* PAGINAS */
-
 .page{
 display:none;
 padding:60px 40px;
@@ -50,8 +46,6 @@ margin:auto;
 .active{
 display:block;
 }
-
-/* HERO */
 
 .hero{
 text-align:center;
@@ -65,8 +59,6 @@ border-radius:8px;
 text-decoration:none;
 color:white;
 }
-
-/* CARDS */
 
 .grid{
 display:grid;
@@ -90,43 +82,6 @@ box-shadow:0 0 20px #0b5ed7;
 .preco{
 font-size:26px;
 color:#0b5ed7;
-}
-
-/* MODAL */
-
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.85);
-justify-content:center;
-align-items:center;
-z-index:999;
-}
-
-.modal-content{
-background:#161b22;
-padding:40px;
-border-radius:12px;
-max-width:500px;
-text-align:center;
-animation:fade .4s;
-}
-
-.close{
-position:absolute;
-top:20px;
-right:30px;
-font-size:28px;
-cursor:pointer;
-}
-
-@keyframes fade{
-from{opacity:0;transform:scale(.9);}
-to{opacity:1;}
 }
 
 footer{
@@ -167,9 +122,21 @@ text-decoration:none;
 <!-- HOME -->
 <div id="home" class="page active">
 <div class="hero">
+
 <h1>Seu computador rápido e funcionando como novo!</h1>
+
 <br>
-<a class="btn" href="https://wa.me/5519998924289">Solicitar Orçamento</a>
+
+<a class="btn" href="https://wa.me/5519998924289">
+Solicitar Orçamento
+</a>
+
+<br><br>
+
+<!-- FOTO DO CARTAZ -->
+<img src="cartaz.jpg"
+style="width:100%;max-width:700px;border-radius:12px;box-shadow:0 0 20px #0b5ed7;">
+
 </div>
 </div>
 
@@ -190,28 +157,12 @@ text-decoration:none;
 <h2>Tabela de Preços</h2>
 
 <div class="grid">
-
-<div class="card" onclick="abrirServico('pc')">
-<h3>Formatação PC</h3>
-<div class="preco">R$120</div>
+<div class="card"><h3>Formatação PC</h3><div class="preco">R$120</div></div>
+<div class="card"><h3>Formatação Celular</h3><div class="preco">R$80</div></div>
+<div class="card"><h3>Limpeza Interna</h3><div class="preco">R$100</div></div>
+<div class="card"><h3>Montagem PC</h3><div class="preco">R$150+</div></div>
 </div>
 
-<div class="card" onclick="abrirServico('celular')">
-<h3>Formatação Celular</h3>
-<div class="preco">R$80</div>
-</div>
-
-<div class="card" onclick="abrirServico('limpeza')">
-<h3>Limpeza Interna</h3>
-<div class="preco">R$100</div>
-</div>
-
-<div class="card" onclick="abrirServico('montagem')">
-<h3>Montagem PC</h3>
-<div class="preco">R$150+</div>
-</div>
-
-</div>
 </div>
 
 <!-- SOBRE -->
@@ -224,7 +175,10 @@ text-decoration:none;
 <div id="contato" class="page">
 <h2>Contato</h2>
 <p>WhatsApp: 19 99892-4289</p>
-<a class="btn" href="https://wa.me/5519998924289">Falar no WhatsApp</a>
+
+<a class="btn" href="https://wa.me/5519998924289">
+Falar no WhatsApp
+</a>
 </div>
 
 <footer>
@@ -233,27 +187,7 @@ text-decoration:none;
 
 <a class="whatsapp" href="https://wa.me/5519998924289">💬</a>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-<div class="modal-content">
-
-<span class="close" onclick="fecharModal()">✖</span>
-
-<h2 id="tituloServico"></h2>
-<p id="descricaoServico"></p>
-<h3 id="precoServico"></h3>
-
-<br>
-
-<a id="btnWhats" class="btn" target="_blank">
-Solicitar Serviço
-</a>
-
-</div>
-</div>
-
 <script>
-
 function showPage(pageId){
 document.querySelectorAll('.page')
 .forEach(p=>p.classList.remove('active'));
@@ -261,51 +195,6 @@ document.querySelectorAll('.page')
 document.getElementById(pageId)
 .classList.add('active');
 }
-
-function abrirServico(tipo){
-
-const dados = {
-
-pc:{
-titulo:"💻 Formatação de PC",
-descricao:"✔ Instalação Windows\n✔ Drivers atualizados\n✔ Programas básicos\n✔ Remoção de vírus\n✔ Otimização completa",
-preco:"R$120"
-},
-
-celular:{
-titulo:"📱 Formatação de Celular",
-descricao:"✔ Backup\n✔ Sistema limpo\n✔ Mais velocidade\n✔ Remoção de vírus",
-preco:"R$80"
-},
-
-limpeza:{
-titulo:"🛠 Limpeza Interna",
-descricao:"✔ Limpeza completa\n✔ Troca pasta térmica\n✔ Redução temperatura\n✔ Melhor desempenho",
-preco:"R$100"
-},
-
-montagem:{
-titulo:"⚡ Montagem de PC",
-descricao:"✔ Montagem completa\n✔ Organização cabos\n✔ Instalação sistema\n✔ Testes finais",
-preco:"R$150+"
-}
-
-};
-
-document.getElementById("tituloServico").innerText=dados[tipo].titulo;
-document.getElementById("descricaoServico").innerText=dados[tipo].descricao;
-document.getElementById("precoServico").innerText=dados[tipo].preco;
-
-document.getElementById("btnWhats")
-.href="https://wa.me/5519998924289";
-
-document.getElementById("modal").style.display="flex";
-}
-
-function fecharModal(){
-document.getElementById("modal").style.display="none";
-}
-
 </script>
 
 </body>

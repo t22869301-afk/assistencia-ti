@@ -18,22 +18,22 @@ color:white;
 overflow-x:hidden;
 }
 
-/* RGB BACKGROUND */
+/* RGB ANIMADO */
 
 body::before{
 content:"";
 position:fixed;
 width:300%;
 height:300%;
-background:linear-gradient(45deg,#ff0000,#00ffea,#003cff,#ff00c8);
-animation:rgb 15s linear infinite;
-opacity:.05;
+background:linear-gradient(45deg,#00e1ff,#ff00c8,#003cff,#00ff95);
+animation:rgb 18s linear infinite;
+opacity:.06;
 z-index:-1;
 }
 
 @keyframes rgb{
 0%{transform:translate(0,0);}
-50%{transform:translate(-25%,-25%);}
+50%{transform:translate(-30%,-30%);}
 100%{transform:translate(0,0);}
 }
 
@@ -44,8 +44,7 @@ background:#010409;
 display:flex;
 justify-content:space-between;
 padding:15px 40px;
-align-items:center;
-box-shadow:0 0 20px #0b5ed7;
+box-shadow:0 0 25px #00e1ff;
 }
 
 nav a{
@@ -55,10 +54,10 @@ transition:.3s;
 }
 
 nav a:hover{
-color:#0b5ed7;
+color:#00e1ff;
 }
 
-/* PAGES */
+/* PAGE */
 
 .page{
 display:none;
@@ -71,31 +70,37 @@ animation:fade .6s;
 .active{display:block;}
 
 @keyframes fade{
-from{opacity:0;transform:translateY(20px);}
+from{opacity:0;transform:translateY(30px);}
 }
 
 /* HERO */
 
 .hero{text-align:center;}
 
+.hero h1{
+font-size:40px;
+text-shadow:0 0 15px #00e1ff;
+}
+
 .btn{
-background:#0b5ed7;
+background:#00e1ff;
 padding:15px 25px;
 border-radius:8px;
 text-decoration:none;
-color:white;
+color:black;
+font-weight:bold;
 transition:.3s;
 }
 
 .btn:hover{
-box-shadow:0 0 15px #0b5ed7;
+box-shadow:0 0 20px #00e1ff;
 }
 
 /* CARDS */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 }
 
@@ -105,15 +110,30 @@ padding:25px;
 border-radius:12px;
 cursor:pointer;
 transition:.4s;
+position:relative;
+overflow:hidden;
 }
 
+.card::before{
+content:"";
+position:absolute;
+width:100%;
+height:3px;
+background:linear-gradient(90deg,#00e1ff,#ff00c8);
+top:0;
+left:-100%;
+transition:.5s;
+}
+
+.card:hover::before{left:0;}
+
 .card:hover{
-transform:translateY(-10px) scale(1.03);
-box-shadow:0 0 25px #0b5ed7;
+transform:translateY(-8px);
+box-shadow:0 0 25px #00e1ff;
 }
 
 .preco{
-font-size:26px;
+font-size:28px;
 color:#00e1ff;
 }
 
@@ -126,7 +146,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.9);
+background:rgba(0,0,0,.95);
 justify-content:center;
 align-items:center;
 z-index:999;
@@ -136,7 +156,7 @@ z-index:999;
 background:#161b22;
 padding:35px;
 border-radius:12px;
-max-width:700px;
+max-width:750px;
 animation:zoom .4s;
 }
 
@@ -148,19 +168,50 @@ from{transform:scale(.7);opacity:0;}
 position:absolute;
 top:20px;
 right:30px;
-font-size:30px;
+font-size:28px;
 cursor:pointer;
+}
+
+/* GALERIA */
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:10px;
+margin-top:15px;
 }
 
 .galeria img{
 width:100%;
-margin-top:10px;
+height:100px;
+object-fit:cover;
 border-radius:8px;
 transition:.3s;
 }
 
 .galeria img:hover{
-transform:scale(1.05);
+transform:scale(1.08);
+box-shadow:0 0 15px #00e1ff;
+}
+
+/* STATUS BAR */
+
+.status{
+margin-top:40px;
+background:#161b22;
+padding:20px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 0 15px #00e1ff;
+}
+
+/* AVALIAÇÕES */
+
+.review{
+background:#161b22;
+padding:20px;
+margin-top:15px;
+border-radius:10px;
 }
 
 /* WHATS */
@@ -174,7 +225,14 @@ padding:18px;
 border-radius:50%;
 color:white;
 text-decoration:none;
-box-shadow:0 0 15px #25D366;
+box-shadow:0 0 20px #25D366;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 10px #25D366;}
+50%{box-shadow:0 0 25px #25D366;}
+100%{box-shadow:0 0 10px #25D366;}
 }
 
 </style>
@@ -186,45 +244,58 @@ box-shadow:0 0 15px #25D366;
 <h2>Assistência TI</h2>
 <div>
 <a onclick="showPage('home')">Home</a>
-<a onclick="showPage('precos')">Serviços</a>
+<a onclick="showPage('servicos')">Serviços</a>
 </div>
 </nav>
 
 <!-- HOME -->
 
 <div id="home" class="page active">
+
 <div class="hero">
-<h1>PC rápido ⚡ Sem travamentos</h1>
+<h1>PC Rápido ⚡ Sem Travar</h1>
 <br>
-<a class="btn" href="https://wa.me/5519998924289">Solicitar Orçamento</a>
+<a class="btn" href="https://wa.me/5519998924289">Chamar no WhatsApp</a>
 </div>
+
+<div class="status">
+🔥 +120 computadores consertados<br>
+⭐ Atendimento rápido e profissional
+</div>
+
+<h2>Avaliações</h2>
+
+<div class="review">⭐⭐⭐⭐⭐ — PC voltou voando!</div>
+<div class="review">⭐⭐⭐⭐⭐ — Atendimento rápido</div>
+<div class="review">⭐⭐⭐⭐⭐ — Recomendo demais</div>
+
 </div>
 
 <!-- SERVIÇOS -->
 
-<div id="precos" class="page">
+<div id="servicos" class="page">
 
 <h2>Serviços</h2>
 
 <div class="grid">
 
-<div class="card" onclick="abrirServico('pc')">
+<div class="card" onclick="abrir('pc')">
 <h3>Formatação PC</h3>
 <div class="preco">R$120</div>
 </div>
 
-<div class="card" onclick="abrirServico('celular')">
+<div class="card" onclick="abrir('cel')">
 <h3>Formatação Celular</h3>
 <div class="preco">R$80</div>
 </div>
 
-<div class="card" onclick="abrirServico('limpeza')">
+<div class="card" onclick="abrir('limpeza')">
 <h3>Limpeza Interna</h3>
 <div class="preco">R$100</div>
 </div>
 
-<div class="card" onclick="abrirServico('montagem')">
-<h3>Montagem PC Gamer</h3>
+<div class="card" onclick="abrir('montagem')">
+<h3>Montagem Gamer</h3>
 <div class="preco">R$150+</div>
 </div>
 
@@ -239,10 +310,10 @@ box-shadow:0 0 15px #25D366;
 <span class="close" onclick="fechar()">✖</span>
 
 <h2 id="titulo"></h2>
-<p id="descricao"></p>
+<p id="desc"></p>
 <h3 id="valor"></h3>
 
-<div class="galeria" id="galeria"></div>
+<div id="galeria" class="galeria"></div>
 
 <br>
 <a class="btn" id="zap" target="_blank">Solicitar Serviço</a>
@@ -260,13 +331,13 @@ document.querySelectorAll('.page')
 document.getElementById(id).classList.add('active');
 }
 
-function abrirServico(tipo){
+function abrir(tipo){
 
-const servicos={
+const dados={
 
 pc:{
-titulo:"💻 Formatação de PC",
-desc:"✔ Windows novo\n✔ Drivers\n✔ Programas\n✔ Limpeza vírus\n✔ Otimização FPS",
+titulo:"💻 Formatação PC",
+desc:"Windows novo, drivers, antivírus e otimização FPS.",
 valor:"R$120",
 imgs:[
 "https://images.unsplash.com/photo-1587202372775-989a0f89f65c",
@@ -274,9 +345,9 @@ imgs:[
 ]
 },
 
-celular:{
+cel:{
 titulo:"📱 Formatação Celular",
-desc:"✔ Backup\n✔ Sistema limpo\n✔ Mais velocidade",
+desc:"Backup, sistema limpo e desempenho rápido.",
 valor:"R$80",
 imgs:[
 "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
@@ -285,7 +356,7 @@ imgs:[
 
 limpeza:{
 titulo:"🛠 Limpeza Interna",
-desc:"✔ Troca pasta térmica\n✔ Reduz temperatura\n✔ Mais desempenho",
+desc:"Troca pasta térmica e redução de temperatura.",
 valor:"R$100",
 imgs:[
 "https://images.unsplash.com/photo-1587202372634-32705e3bf49c"
@@ -294,7 +365,7 @@ imgs:[
 
 montagem:{
 titulo:"⚡ Montagem Gamer",
-desc:"✔ Montagem completa\n✔ RGB\n✔ Testes\n✔ Organização cabos",
+desc:"Montagem completa + RGB + testes finais.",
 valor:"R$150+",
 imgs:[
 "https://images.unsplash.com/photo-1593640408182-31c70c8268f5"
@@ -303,10 +374,10 @@ imgs:[
 
 };
 
-let s=servicos[tipo];
+let s=dados[tipo];
 
 titulo.innerText=s.titulo;
-descricao.innerText=s.desc;
+desc.innerText=s.desc;
 valor.innerText=s.valor;
 
 galeria.innerHTML="";
